@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nomHotel');
             $table->string('addresse');
-            $table->string('prixNuitee');
+            $table->decimal('prixNuitee', 10, 2);
             $table->string('numero');
             $table->string('email')->unique();
-             $table->enum('devise', ['F CFA', 'Euro', 'Dollar']);
+             $table->enum('devise', ['FCFA', 'Euro', 'Dollar']);
             $table->string('cheminImage');            
             $table->timestamps();
         });
