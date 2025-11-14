@@ -19,10 +19,15 @@ $validated=$request->validate([
 'email'=>'required|string',
 'devise'=>'required|string',
 'prixNuitee'=>'required|numeric|min:0',
-'cheminImage'=>'required|string',
+"cheminImage" => "required|file|image|max:2048",
+
 
 
 ]);
+ if ($request->hasFile('cheminImage')) {
+        $path = $request->file('cheminImage')->store('hotels', 'public');
+        $validated['cheminImage'] = $path;
+    }
 $validated['user_id'] = Auth::id();
 $hotel=Hotel::create($validated);
 return response()->json($hotel);
@@ -44,9 +49,12 @@ return response()->json($hotel);
 'email'=>'required|string',
 'devise'=>'required|string',
 'prixNuitee'=>'required|numeric|min:0',
-'cheminImage'=>'required|string',
+'cheminImage' => 'required|file|image|max:2048',
         ]);
-
+ if ($request->hasFile('cheminImage')) {
+        $path = $request->file('cheminImage')->store('hotels', 'public');
+        $validated['cheminImage'] = $path;
+    }
 $hotel->update($validated);
         return response()->json($hotel);
     }
