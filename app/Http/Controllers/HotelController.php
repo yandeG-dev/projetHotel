@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class HotelController extends Controller
 {
     public function index(){
-      return response()->json(
-        Hotel::where('user_id', Auth::id())->get()
-    );
+        return response()->json(Hotel::all());
     }
 
     public function store(Request $request){
@@ -22,7 +20,6 @@ $validated=$request->validate([
 'devise'=>'required|string',
 'prixNuitee'=>'required|numeric|min:0',
 "cheminImage" => "required|file|image|max:2048",
-
 
 
 
