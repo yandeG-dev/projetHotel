@@ -41,9 +41,9 @@ return response()->json($hotel);
     public function update(Request $request, $id) {
         $hotel = Hotel::findOrFail($id);
 
-        if ($hotel->user_id !== Auth::id()) {
-            return response()->json(['message' => 'Unauthorized'], 403);
-        }
+        // if ($hotel->user_id !== Auth::id()) {
+        //     return response()->json(['message' => 'Unauthorized'], 403);
+        // }
 
        $validated=$request->validate([
            'nomHotel'=>'required|string',
@@ -68,9 +68,9 @@ $hotel->update($validated);
     {
         $hotel = Hotel::findOrFail($id);
 
-        if ($hotel->user_id !== Auth::id()) {
-            return response()->json(['message' => 'Non autorisé'], 403);
-        }
+        // if ($hotel->user_id !== Auth::id()) {
+        //     return response()->json(['message' => 'Non autorisé'], 403);
+        // }
 
         $hotel->delete();
 
