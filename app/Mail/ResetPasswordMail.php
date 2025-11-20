@@ -13,7 +13,7 @@ class ResetPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $url; // accessible dans la vue
+    public $url; 
 
    
     public function __construct($url)
@@ -32,7 +32,7 @@ class ResetPasswordMail extends Mailable
     {
         return new Content(
             view: 'email.reset_password',
-            with: ['url' => $this->url] // passe $url à la vue
+            with: ['url' => $this->url] 
         );
     }
 

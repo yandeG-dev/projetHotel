@@ -27,13 +27,13 @@ class PasswordResetController extends Controller
             ['token' => $token, 'created_at' => Carbon::now()]
         );
 
-        // Générer le lien pour le front-end
+        
         $url = url("/reset-password-form?token=$token&email=".$request->email);
 
-        // Envoyer l'email
+      
         Mail::to($request->email)->send(new ResetPasswordMail($url));
 
-        // Retour pour Postman si tu veux tester sans mail
+       
         return response()->json([
             'message' => 'Lien de réinitialisation généré.',
             'token' => $token,
