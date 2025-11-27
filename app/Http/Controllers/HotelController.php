@@ -28,7 +28,7 @@ $validated=$request->validate([
 ]);
  if ($request->hasFile('cheminImage')) {
         $path = $request->file('cheminImage')->store('hotels', 'public');
-     $validated['cheminImage'] = '/storage/' . $path;
+        $validated['cheminImage'] = $path;
     }
  $validated['user_id'] = Auth::id();
 $hotel=Hotel::create($validated);
@@ -55,7 +55,7 @@ return response()->json($hotel);
         ]);
  if ($request->hasFile('cheminImage')) {
         $path = $request->file('cheminImage')->store('hotels', 'public');
-         $validated['cheminImage'] = '/storage/' . $path;
+        $validated['cheminImage'] = $path;
     }
 $hotel->update($validated);
         return response()->json($hotel);
