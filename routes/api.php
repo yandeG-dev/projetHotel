@@ -28,3 +28,4 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 });
 
+Route::get('/images/hotels/{filename}', [HotelController::class, 'getImage']);
