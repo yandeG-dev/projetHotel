@@ -14,4 +14,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN composer install --optimize-autoloader --no-dev
 
+RUN php artisan migrate --force || true
+
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
